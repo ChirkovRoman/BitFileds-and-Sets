@@ -50,7 +50,6 @@ int main()
 	H = H;//Не надо
 
 	H = D | E;
-
 	G = D & E;
 	cout << "Поле 1 | поле 2 = " << H << endl;
 	cout << "Поле 1 & поле 2 = " << G << endl;
