@@ -90,7 +90,6 @@ int TBitField::operator==(const TBitField & bf)
 TBitField & TBitField::operator=(const TBitField & bf)
 {
 	if (this != &bf) {
-		delete[] pMem;
 		BitLen = bf.GetBitLen();
 		MemLen = bf.GetMemLen();
 		pMem = new TELEM[MemLen];
@@ -103,31 +102,35 @@ TBitField & TBitField::operator=(const TBitField & bf)
 
 TBitField TBitField::operator|(const TBitField & bf)
 {
-	if (MemLen != bf.GetMemLen()) {
-		cout << "Поля разной длины" << endl;
-		return *this;
-	}
-	
+	int len = BitLen;
+	if (BitLen < bf.BitLen)
+		len = bf.BitLen;
 	TBitField tmp = TBitField(BitLen);
-	for (int i = 0; i < MemLen; i++) {
-		tmp.pMem[i] = pMem[i] | bf.pMem[i];
+	for (int i = 0; i < MemLen; i++)
+	{
+		tmp.pMem[i] = pMem[i];
+	}
+	for (int i = 0; i < bf.MemLen; i++) {
+		tmp.pMem[i] |= bf.pMem[i];
 	}
 	return tmp;
 }
 
 TBitField TBitField::operator&(const TBitField & bf)
 {
-	if (MemLen != bf.GetMemLen()) {
-		cout << "Поля разной длины" << endl;
-		return *this;
-	}
+	int len = BitLen;
+	if (BitLen < bf.BitLen)
+		len = bf.BitLen;
 	TBitField tmp = TBitField(BitLen);
-	for (int i = 0; i < MemLen; i++) {
-		tmp.pMem[i] = pMem[i] & bf.pMem[i];
+	for (int i = 0; i < MemLen; i++)
+	{
+		tmp.pMem[i] = pMem[i];
+	}
+	for (int i = 0; i < bf.MemLen; i++) {
+		tmp.pMem[i] &= bf.pMem[i];
 	}
 	return tmp;
 }
-
 TBitField TBitField::operator~()
 {
 	for (int i = 0; i < MemLen; i++) {
