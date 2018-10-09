@@ -1,5 +1,4 @@
 #include "TBitField.h"
-#include <string>
 
 TBitField::TBitField()
 {
@@ -170,7 +169,6 @@ istream & operator>>(istream & istr, TBitField & bf)
 ostream & operator<<(ostream & ostr, const TBitField & bf)
 {
 	int len = bf.GetBitLen();
-	string str;
 	for (int i = 0; i < len; i++) {
 		if (bf.GetBit(i)) 
 			ostr << '1';
