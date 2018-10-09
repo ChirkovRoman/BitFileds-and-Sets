@@ -11,6 +11,7 @@ TSet::TSet()
 
 TSet::~TSet()
 {
+
 }
 
 TSet::TSet(int mp)
@@ -52,7 +53,8 @@ void TSet::DelElem(const int n)
 
 int TSet::IsMember(const int n) const
 {
-	BitField.GetBit(n);
+	return BitField.GetBit(n);
+	
 }
 
 int TSet::operator==(const TSet & s)
@@ -66,6 +68,7 @@ TSet & TSet::operator=(const TSet & s)
 {
 	MaxPower = s.MaxPower;
 	BitField = s.BitField;
+	return *this;
 }
 
 TSet TSet::operator+(const int n)
@@ -98,13 +101,13 @@ TSet TSet::operator*(const TSet & s)
 
 TSet TSet::operator~(void)
 {
-	BitField = ~BitField;
+	return ~BitField;
 }
 
 istream & operator>>(istream & istr, TSet & bf)
 {
 	int buf;
-	while (scanf("%d", buf)) {
+	while (scanf("%d", &buf)) {
 		bf = bf + buf;
 	}
 	return istr;
