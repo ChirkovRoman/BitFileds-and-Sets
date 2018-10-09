@@ -1,53 +1,44 @@
-#include "TBitField.h"
 #include <locale.h>
 #include <iostream>
+#include "TSet.h"
 
 using namespace std;
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
+	int n, m, k, count;
 
-	int input;
-	cout << "Введите длину поля" << endl;
-	cin >> input;
-	TBitField F = TBitField(input);
+	cout << "Тестирование программ поддержки множества" << endl;
+	cout << " Решето Эратосфена" << endl;
+	cout << "Введите верхнюю границу целых значений - ";
 
-	cout << "Введите номер бита для установки" << endl;
-	cin >> input;
-	F.SetBit(input);
-	cout << F << endl;
+	cin >> n;
+	TSet s(n + 1); // заполнение множества
 
-	cout << "Введите номер бита для установки" << endl;
-	cin >> input;
-	F.SetBit(input);
-	cout << F << endl;
+	for (m = 2; m <= n; m++) 
+		s.InsElem(m); // проверка до sqrt(n) и удаление кратных
 
-	cout << "Введите номер бита для очистки" << endl;
-	cin >> input;
-	F.ClearBit(input);
-	cout << F << endl;
+	for (m = 2; m * m <= n; m++) // если м в s, удаление кратных
+		if (s.IsMember(m)) 
+			for (k = 2 * m; k <= n; k += m) 
+				if (s.IsMember(k)) s.DelElem(k); // оставшиеся в s элементы - простые числа
 
-	TBitField D = TBitField(256);
-	cout << "Введите поле 1" << endl;
-	cin >> D;
+	cout << endl << "Печать множества некратных чисел" << endl << s << endl;
+	cout << endl << "Печать простых чисел" << endl;
+	count = 0;
 
-	TBitField E = TBitField(256);
-	cout << "Введите поле 2" << endl;
-	cin >> E;
+	k = 1;
+	for (m = 2; m <= n; m++)
+		if (s.IsMember(m)) 
+		{	
+			count++;
+			cout << setw(3) << m << " ";
+			if (k++ % 10 == 0)
+				cout << endl;
+		}
+	cout << endl;
+	cout << "В первых " << n << " числах " << count << " простых" << endl;
 
-	if (E == D) cout << "Поле 1 == полю 2" << endl;
-	else cout << "Поле 1 != полю 2" << endl;
-
-	cout << D << endl;
-
-	TBitField H = TBitField(256);
-	TBitField G = TBitField(256);
-
-	H = D | E;
-	G = D & E;
-	cout << "Поле 1 | поле 2 = " << H << endl;
-	cout << "Поле 1 & поле 2 = " << G << endl;
-	cout << "~Поле 1 = " << ~E << endl;
 	system("pause");
 }
