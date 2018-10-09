@@ -5,7 +5,7 @@
 TSet::TSet()
 {
 	MaxPower = 0;
-	BitField = NULL;
+	TBitField BitField;
 }
 
 
@@ -99,6 +99,15 @@ TSet TSet::operator*(const TSet & s)
 TSet TSet::operator~(void)
 {
 	BitField = ~BitField;
+}
+
+istream & operator>>(istream & istr, TSet & bf)
+{
+	int buf;
+	while (scanf("%d", buf)) {
+		bf = bf + buf;
+	}
+	return istr;
 }
 
 ostream & operator<<(ostream & ostr, const TSet & bf)
