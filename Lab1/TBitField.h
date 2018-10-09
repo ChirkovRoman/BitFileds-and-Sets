@@ -11,6 +11,7 @@ private:
 	int MemLen;
 	TELEM *pMem;
 public:
+	TBitField();
 	TBitField(const int _BitLen);
 	TBitField(const TBitField &bf);
 	//Методы реализации

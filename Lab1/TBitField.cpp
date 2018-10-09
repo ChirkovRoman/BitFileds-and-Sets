@@ -1,6 +1,13 @@
 #include "TBitField.h"
 #include <string>
 
+TBitField::TBitField()
+{
+	BitLen = 0;
+	MemLen = 0;
+	pMem = NULL;
+}
+
 TBitField::TBitField(const int _BitLen)
 {
 	BitLen = _BitLen;
