@@ -81,3 +81,22 @@ TSet TSet::operator-(const int n)
 	tmp.DelElem(n);
 	return tmp;
 }
+
+TSet TSet::operator+(const TSet & s)
+{
+	TSet tmp = *this;
+	tmp.BitField = tmp.BitField | s.BitField;
+	return tmp;
+}
+
+TSet TSet::operator*(const TSet & s)
+{
+	TSet tmp = *this;
+	tmp.BitField = tmp.BitField & s.BitField;
+	return tmp;
+}
+
+TSet TSet::operator~(void)
+{
+	BitField = ~BitField;
+}
