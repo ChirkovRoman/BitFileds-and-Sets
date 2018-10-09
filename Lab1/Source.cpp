@@ -10,7 +10,7 @@ int main()
 	int n, m, k, count;
 
 	cout << "Тестирование программ поддержки множества" << endl;
-	cout << " Решето Эратосфена" << endl;
+	cout << "			 Решето Эратосфена			  " << endl;
 	cout << "Введите верхнюю границу целых значений - ";
 
 	cin >> n;
@@ -29,7 +29,7 @@ int main()
 	count = 0;
 
 	k = 1;
-	for (m = 2; m <= n; m++)
+	/*for (m = 2; m <= n; m++)
 		if (s.IsMember(m)) 
 		{	
 			count++;
@@ -38,7 +38,7 @@ int main()
 				cout << endl;
 		}
 	cout << endl;
-	cout << "В первых " << n << " числах " << count << " простых" << endl;
+	cout << "В первых " << n << " числах " << count << " простых" << endl;*/
 
 	system("pause");
 }
