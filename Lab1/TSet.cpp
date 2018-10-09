@@ -100,3 +100,12 @@ TSet TSet::operator~(void)
 {
 	BitField = ~BitField;
 }
+
+ostream & operator<<(ostream & ostr, const TSet & bf)
+{
+	for (int i = 0; i < bf.BitField.GetBitLen(); i++) {
+		if (bf.BitField.GetBit(i))
+			ostr << i << " " << endl;
+	}
+	return ostr;
+}
