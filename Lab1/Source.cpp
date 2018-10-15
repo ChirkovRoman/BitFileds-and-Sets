@@ -29,16 +29,6 @@ int main()
 	count = 0;
 
 	k = 1;
-	/*for (m = 2; m <= n; m++)
-		if (s.IsMember(m)) 
-		{	
-			count++;
-			cout << setw(3) << m << " ";
-			if (k++ % 10 == 0)
-				cout << endl;
-		}
-	cout << endl;
-	cout << "В первых " << n << " числах " << count << " простых" << endl;*/
 
 	system("pause");
 }
