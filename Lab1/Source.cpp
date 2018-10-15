@@ -24,9 +24,9 @@ int main()
 			for (k = 2 * m; k <= n; k += m) 
 				if (s.IsMember(k)) s.DelElem(k); // оставшиес€ в s элементы - простые числа
 
+	cout << endl << "ѕечать множества некратных чисел" << endl << s << endl;
 
 	cout << endl << "¬вод элементов множества" << endl;	
-	
 	cout << endl << "¬ведите наибольший элемент" << endl;
 	cin >> n;
 	TSet d(n+1);
