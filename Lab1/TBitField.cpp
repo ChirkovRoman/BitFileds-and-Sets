@@ -111,7 +111,7 @@ TBitField TBitField::operator|(const TBitField & bf)
 	int len = BitLen;
 	if (BitLen < bf.BitLen)
 		len = bf.BitLen;
-	TBitField tmp = TBitField(BitLen);
+	TBitField tmp(len);
 	for (int i = 0; i < MemLen; i++)
 	{
 		tmp.pMem[i] = pMem[i];
@@ -127,7 +127,7 @@ TBitField TBitField::operator&(const TBitField & bf)
 	int len = BitLen;
 	if (BitLen < bf.BitLen)
 		len = bf.BitLen;
-	TBitField tmp = TBitField(BitLen);
+	TBitField tmp(len);
 	for (int i = 0; i < MemLen; i++)
 	{
 		tmp.pMem[i] = pMem[i];

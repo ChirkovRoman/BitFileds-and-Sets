@@ -8,7 +8,7 @@ int main()
 {
 	setlocale(LC_ALL, "Rus");
 	int n, m, k;
-
+	/*
 	cout << "“естирование программ поддержки множества" << endl;
 	cout << "	–ешето Ёратосфена			  " << endl;
 	cout << "¬ведите верхнюю границу целых значений - ";
@@ -25,15 +25,41 @@ int main()
 				if (s.IsMember(k)) s.DelElem(k); // оставшиес€ в s элементы - простые числа
 
 	cout << endl << "ѕечать множества некратных чисел" << endl << s << endl;
+	*/
 
-	cout << endl << "¬вод элементов множества" << endl;	
+	cout << endl << "¬вод множества A" << endl;	
 	cout << endl << "¬ведите наибольший элемент" << endl;
 	cin >> n;
-	TSet d(n+1);
-	cin >> d;
+	TSet A(n+1);
+	cin >> A;
 
 	cout << endl << "¬ведЄнное множество" << endl;
-	cout << d << endl;
+	cout << A << endl;
+
+	cout << endl << "¬вод множества B" << endl;
+	cout << endl << "¬ведите наибольший элемент" << endl;
+	cin >> n;
+	TSet B(n + 1);
+	cin >> B;
+
+	cout << endl << "¬ведЄнное множество" << endl;
+	cout << B << endl;
+
+	cout << endl << "¬ведите элемент дл€ добавлени€ в множество A" << endl;
+	cin >> n;
+	A = A + n;
+	cout << A << endl;
+
+	cout << endl << "¬ведите элемент дл€ исключени€ из множества A" << endl;
+	cin >> n;
+	A = A - n;
+	cout << A << endl;
+
+	//TSet R1 = A + B;
+	//TSet R2 = A * B;
+	cout << "A + B = {" << A + B << "}" << endl;
+	cout << "A * B = {" << A * B << "}" << endl;
+	cout << "~A = {" << ~A << "}" << endl;
 
 	system("pause");
 }
