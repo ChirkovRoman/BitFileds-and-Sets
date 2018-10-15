@@ -5,7 +5,7 @@
 TSet::TSet()
 {
 	MaxPower = 0;
-	TBitField BitField;
+	TBitField BitField = TBitField();
 }
 
 
@@ -54,7 +54,6 @@ void TSet::DelElem(const int n)
 int TSet::IsMember(const int n) const
 {
 	return BitField.GetBit(n);
-	
 }
 
 int TSet::operator==(const TSet & s)
