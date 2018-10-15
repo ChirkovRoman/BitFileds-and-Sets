@@ -89,7 +89,7 @@ TSet TSet::operator-(const int n)
 TSet TSet::operator+(const TSet & s)
 {
 	TSet tmp;
-	tmp.BitField = tmp.BitField | s.BitField;
+	tmp.BitField = BitField | s.BitField;
 	tmp.MaxPower = tmp.BitField.GetBitLen();
 
 	return tmp;
@@ -98,7 +98,7 @@ TSet TSet::operator+(const TSet & s)
 TSet TSet::operator*(const TSet & s)
 {
 	TSet tmp;
-	tmp.BitField = tmp.BitField & s.BitField;
+	tmp.BitField = BitField & s.BitField;
 	tmp.MaxPower = tmp.BitField.GetBitLen();
 
 	return tmp;
