@@ -7,10 +7,10 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	int n, m, k, count;
+	int n, m, k;
 
 	cout << "“естирование программ поддержки множества" << endl;
-	cout << "			 –ешето Ёратосфена			  " << endl;
+	cout << "	–ешето Ёратосфена			  " << endl;
 	cout << "¬ведите верхнюю границу целых значений - ";
 
 	cin >> n;
@@ -24,11 +24,16 @@ int main()
 			for (k = 2 * m; k <= n; k += m) 
 				if (s.IsMember(k)) s.DelElem(k); // оставшиес€ в s элементы - простые числа
 
-	cout << endl << "ѕечать множества некратных чисел" << endl << s << endl;
-	cout << endl << "ѕечать простых чисел" << endl;
-	count = 0;
 
-	k = 1;
+	cout << endl << "¬вод элементов множества" << endl;	
+	
+	cout << endl << "¬ведите наибольший элемент" << endl;
+	cin >> n;
+	TSet d(n+1);
+	cin >> d;
+
+	cout << endl << "¬ведЄнное множество" << endl;
+	cout << d << endl;
 
 	system("pause");
 }

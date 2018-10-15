@@ -105,10 +105,13 @@ TSet TSet::operator~(void)
 
 istream & operator>>(istream & istr, TSet & bf)
 {
+	cout << "¬ведите -1, чтобы прекратить ввод" << endl;
 	int buf;
-	while (scanf("%d", &buf)) {
+	do  {
+		scanf("%d", &buf);
+		if (buf == -1)  break;
 		bf = bf + buf;
-	}
+	} while (1);
 	return istr;
 }
 
@@ -116,7 +119,7 @@ ostream & operator<<(ostream & ostr, const TSet & bf)
 {
 	for (int i = 0; i < bf.BitField.GetBitLen(); i++) {
 		if (bf.BitField.GetBit(i))
-			ostr << i << " " << endl;
+			ostr << i << " ";
 	}
 	return ostr;
 }
