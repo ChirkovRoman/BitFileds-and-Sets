@@ -43,6 +43,8 @@ int TSet::GetMaxPower(void) const
 
 void TSet::InsElem(const int n)
 {
+	if (n > MaxPower)
+		BitField = TBitField(MaxPower) | BitField;
 	BitField.SetBit(n);
 }
 
@@ -86,21 +88,28 @@ TSet TSet::operator-(const int n)
 
 TSet TSet::operator+(const TSet & s)
 {
-	TSet tmp = *this;
+	TSet tmp;
 	tmp.BitField = tmp.BitField | s.BitField;
+	tmp.MaxPower = tmp.BitField.GetBitLen();
+
 	return tmp;
 }
 
 TSet TSet::operator*(const TSet & s)
 {
-	TSet tmp = *this;
+	TSet tmp;
 	tmp.BitField = tmp.BitField & s.BitField;
+	tmp.MaxPower = tmp.BitField.GetBitLen();
+
 	return tmp;
 }
 
 TSet TSet::operator~(void)
 {
-	return ~BitField;
+	TSet tmp = *this;
+	tmp.BitField = ~BitField;
+
+	return tmp;
 }
 
 istream & operator>>(istream & istr, TSet & bf)
@@ -110,6 +119,8 @@ istream & operator>>(istream & istr, TSet & bf)
 	do  {
 		scanf("%d", &buf);
 		if (buf == -1)  break;
+		if (buf > bf.MaxPower) 
+			cout << "Элемент не входит в множество" << endl;
 		bf = bf + buf;
 	} while (1);
 	return istr;
