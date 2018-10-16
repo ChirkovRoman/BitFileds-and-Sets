@@ -35,6 +35,7 @@ int main()
 
 	cout << endl << "Введённое множество" << endl;
 	cout << A << endl;
+	cout << "Всего элементов" << A.GetPower() << endl;
 
 	cout << endl << "Ввод множества B" << endl;
 	cout << endl << "Введите наибольший элемент" << endl;
@@ -44,22 +45,37 @@ int main()
 
 	cout << endl << "Введённое множество" << endl;
 	cout << B << endl;
+	cout << "Всего элементов" << B.GetPower() << endl;
 
 	cout << endl << "Введите элемент для добавления в множество A" << endl;
 	cin >> n;
 	A = A + n;
 	cout << A << endl;
+	
 
 	cout << endl << "Введите элемент для исключения из множества A" << endl;
 	cin >> n;
 	A = A - n;
 	cout << A << endl;
 
-	//TSet R1 = A + B;
-	//TSet R2 = A * B;
+	if (A == B)
+		cout << "A == B" << endl;
+	else 
+		cout << "A != B" << endl;
+
 	cout << "A + B = {" << A + B << "}" << endl;
 	cout << "A * B = {" << A * B << "}" << endl;
 	cout << "~A = {" << ~A << "}" << endl;
+
+	B = A;
+	cout << "Множество B после копирования множества A = {" << B << "}" << endl;
+
+	cout << endl << "Введите элемент проверки на наличие в множестве B" << endl;
+	cin >> n;
+	if (B.IsMember(n))
+		cout << n << "является элементом множества B" << endl;
+	else 
+		cout << n << "не является элементом множества B" << endl;
 
 	system("pause");
 }

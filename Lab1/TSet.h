@@ -15,6 +15,7 @@ public:
 
 	// доступ к битам
 	int GetMaxPower(void) const; // максимальная мощность множества
+	int GetPower(void) const; // мощность множества
 	void InsElem(const int n); // включить элемент в множество
 	void DelElem(const int n); // удалить элемент из множества
 	int IsMember(const int n) const; // проверить наличие элемента в множестве
@@ -28,8 +29,8 @@ public:
 	TSet operator* (const TSet &s); // пересечение
 	TSet operator~ (void); // дополнение
 
-	friend istream &operator>>(istream &istr, TSet &bf);
-	friend ostream &operator<<(ostream &ostr, const TSet &bf);
+	friend istream &operator>>(istream &istr, TSet &set);
+	friend ostream &operator<<(ostream &ostr, const TSet &set);
 
 };
 
