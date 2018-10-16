@@ -41,6 +41,16 @@ int TSet::GetMaxPower(void) const
 	return MaxPower;
 }
 
+int TSet::GetPower(void) const
+{
+	int count = 0;
+	for (int i = 0; i < MaxPower; i++) {
+		if (IsMember(i))
+			count++;
+	}
+	return count;
+}
+
 void TSet::InsElem(const int n)
 {
 	if (n > MaxPower)
@@ -112,24 +122,24 @@ TSet TSet::operator~(void)
 	return tmp;
 }
 
-istream & operator>>(istream & istr, TSet & bf)
+istream & operator>>(istream & istr, TSet & set)
 {
 	cout << "¬ведите -1, чтобы прекратить ввод" << endl;
 	int buf;
 	do  {
 		scanf("%d", &buf);
 		if (buf == -1)  break;
-		if (buf > bf.MaxPower) 
+		if (buf > set.MaxPower) 
 			cout << "Ёлемент не входит в множество" << endl;
-		bf = bf + buf;
-	} while (1);
+		set = set + buf;
+	} while (buf != -1);
 	return istr;
 }
 
-ostream & operator<<(ostream & ostr, const TSet & bf)
+ostream & operator<<(ostream & ostr, const TSet & set)
 {
-	for (int i = 0; i < bf.BitField.GetBitLen(); i++) {
-		if (bf.BitField.GetBit(i))
+	for (int i = 0; i < set.BitField.GetBitLen(); i++) {
+		if (set.IsMember(i))
 			ostr << i << " ";
 	}
 	return ostr;
