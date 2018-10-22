@@ -3,28 +3,16 @@
 #include "TSet.h"
 
 using namespace std;
+void menu();
+void primeNumbers();
+void operations();
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	int n, m, k;
-	
 	cout << "“естирование программ поддержки множества" << endl;
-	cout << "	–ешето Ёратосфена" << endl;
-	cout << "¬ведите верхнюю границу целых значений - ";
 
-	cin >> n;
-	TSet s(n + 1); // заполнение множества
-
-	for (m = 2; m <= n; m++) 
-		s.InsElem(m); // проверка до sqrt(n) и удаление кратных
-
-	for (m = 2; m * m <= n; m++) // если м в s, удаление кратных
-		if (s.IsMember(m)) 
-			for (k = 2 * m; k <= n; k += m) 
-				if (s.IsMember(k)) s.DelElem(k); // оставшиес€ в s элементы - простые числа
-
-	cout << endl << "ѕечать множества некратных чисел" << endl << s << endl;
+	menu();
 
 	cout << endl << "¬вод множества A" << endl;	
 	cout << endl << "¬ведите наибольший элемент" << endl;
@@ -81,4 +69,45 @@ int main()
 		cout << n << " не €вл€етс€ элементом множества B" << endl;
 		
 	system("pause");
+}
+
+void menu()
+{
+	int input = -1;
+	while (input == -1) {
+		cout << "¬ведите номер желаемого действи€"								<< endl
+			 << "\t1. ѕрименить –ешето Ёратосфена и отобразить простые числа"	<< endl
+			 << "\t2. ¬вести два множества и провести над ними операции"		<< endl;
+		cin >> input;
+	}
+	switch (input) {
+		case 1:
+			primeNumbers();
+			break;
+		case 2: 
+			operations();
+			break;
+		default: input = -1;
+	}
+}
+
+void primeNumbers()
+{
+	int n, m, k;
+
+	cout << "	–ешето Ёратосфена" << endl;
+	cout << "¬ведите верхнюю границу целых значений - ";
+
+	cin >> n;
+	TSet s(n + 1); // заполнение множества
+
+	for (m = 2; m <= n; m++)
+		s.InsElem(m); // проверка до sqrt(n) и удаление кратных
+
+	for (m = 2; m * m <= n; m++) // если м в s, удаление кратных
+		if (s.IsMember(m))
+			for (k = 2 * m; k <= n; k += m)
+				if (s.IsMember(k)) s.DelElem(k); // оставшиес€ в s элементы - простые числа
+
+	cout << endl << "ѕечать множества некратных чисел" << endl << s << endl;
 }
