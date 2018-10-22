@@ -1,58 +1,88 @@
-#include "TBitField.h"
 #include <locale.h>
 #include <iostream>
+#include "TSet.h"
 
 using namespace std;
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
+	int n, m, k;
+	/*
+	cout << "Тестирование программ поддержки множества" << endl;
+	cout << "	Решето Эратосфена" << endl;
+	cout << "Введите верхнюю границу целых значений - ";
 
-	/*TBitField F = TBitField(40);
-	int input;
-	cout << "Введите номер бита для установки" << endl;
-	cin >> input;
-	F.SetBit(input);
-	cout << F << endl;
+	cin >> n;
+	TSet s(n + 1); // заполнение множества
 
-	cout << "Введите номер бита для установки" << endl;
-	cin >> input;
-	F.SetBit(input);
-	cout << F << endl;
+	for (m = 2; m <= n; m++) 
+		s.InsElem(m); // проверка до sqrt(n) и удаление кратных
 
-	cout << "Введите номер бита для очистки" << endl;
-	cin >> input;
-	F.ClearBit(input);
-	cout << F << endl;*/
+	for (m = 2; m * m <= n; m++) // если м в s, удаление кратных
+		if (s.IsMember(m)) 
+			for (k = 2 * m; k <= n; k += m) 
+				if (s.IsMember(k)) s.DelElem(k); // оставшиеся в s элементы - простые числа
 
-	TBitField D = TBitField(256);
-	cout << "Введите поле 1" << endl;
-	cin >> D;
-	cout << D << endl;
+	cout << endl << "Печать множества некратных чисел" << endl << s << endl;
+	*/
 
-	TBitField E = TBitField(256);
-	cout << "Введите поле 2" << endl;
-	cin >> E;
-	cout << E << endl;
+	cout << endl << "Ввод множества A" << endl;	
+	cout << endl << "Введите наибольший элемент" << endl;
+	cin >> n;
+	TSet A(n+1);
+	cin >> A;
 
-	if (E == D) cout << "Поле 1 == полю 2" << endl;
-	else cout << "Поле 1 != полю 2" << endl;
+	cout << endl << "Введённое множество" << endl;
+	cout << A << endl;
+	cout << "Всего элементов " << A.GetPower() << endl;
+	/*
+	cout << endl << "Ввод множества B" << endl;
+	cout << endl << "Введите наибольший элемент" << endl;
+	cin >> n;
+	TSet B(n + 1);
+	cin >> B;
 
-//	D = E;
-	cout << D << endl;
+	cout << endl << "Введённое множество" << endl;
+	cout << B << endl;
+	cout << "Всего элементов " << B.GetPower() << endl;
 
-	TBitField H = TBitField(256);
-	TBitField G = TBitField(256);
-	H = G;
-	cout << H << endl;
-	cout << H[0] << endl;
+	cout << endl << "Введите элемент для добавления в множество A" << endl;
+	cin >> n;
+	A = A + n;
+	cout << A << endl;
 	
-	H = H;//Не надо
 
-	H = D | E;
-	G = D & E;
-	cout << "Поле 1 | поле 2 = " << H << endl;
-	cout << "Поле 1 & поле 2 = " << G << endl;
-	cout << "~Поле 1 = " << ~H << endl;
+	cout << endl << "Введите элемент для исключения из множества A" << endl;
+	cin >> n;
+	A = A - n;
+	cout << A << endl;
+
+	if (A == B)
+		cout << "A == B" << endl;
+	else 
+		cout << "A != B" << endl;
+	
+	cout << "A + B = {" << A + B << "}" << endl;
+	cout << "A * B = {" << A * B << "}" << endl;*/
+
+	cout << "~A = {" << ~A << "}" << endl;
+
+	cout << A;
+	/*B = A;
+	
+
+	cout << "Множество B после копирования множества A = {" << B << "}" << endl;
+
+	TBitField C = B;
+	cout << "Битовое поле, полученное из B " << C << endl;
+
+	cout << endl << "Введите элемент проверки на наличие в множестве B" << endl;
+	cin >> n;
+	if (B.IsMember(n))
+		cout << n << " является элементом множества B" << endl;
+	else 
+		cout << n << " не является элементом множества B" << endl;
+		*/
 	system("pause");
 }

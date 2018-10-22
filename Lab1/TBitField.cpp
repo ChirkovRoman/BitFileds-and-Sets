@@ -1,5 +1,11 @@
 #include "TBitField.h"
-#include <string>
+
+TBitField::TBitField()
+{
+	BitLen = 0;
+	MemLen = 0;
+	pMem = NULL;
+}
 
 TBitField::TBitField(const int _BitLen)
 {
@@ -13,7 +19,12 @@ TBitField::TBitField(const int _BitLen)
 
 TBitField::TBitField(const TBitField & bf)
 {
-	*this = bf;
+	BitLen = bf.GetBitLen();
+	MemLen = bf.GetMemLen();
+	pMem = new TELEM[MemLen];
+	for (int i = 0; i < MemLen; i++) {
+		pMem[i] = bf.pMem[i];
+	}
 }
 
 int TBitField::GetMemIndex(const int n) const
@@ -90,7 +101,6 @@ int TBitField::operator==(const TBitField & bf)
 TBitField & TBitField::operator=(const TBitField & bf)
 {
 	if (this != &bf) {
-		delete[] pMem;
 		BitLen = bf.GetBitLen();
 		MemLen = bf.GetMemLen();
 		pMem = new TELEM[MemLen];
@@ -103,37 +113,42 @@ TBitField & TBitField::operator=(const TBitField & bf)
 
 TBitField TBitField::operator|(const TBitField & bf)
 {
-	if (MemLen != bf.GetMemLen()) {
-		cout << "Поля разной длины" << endl;
-		return *this;
+	int len = BitLen;
+	if (BitLen < bf.BitLen)
+		len = bf.BitLen;
+	TBitField tmp(len);
+	for (int i = 0; i < MemLen; i++)
+	{
+		tmp.pMem[i] = pMem[i];
 	}
-	
-	TBitField tmp = TBitField(BitLen);
-	for (int i = 0; i < MemLen; i++) {
-		tmp.pMem[i] = pMem[i] | bf.pMem[i];
+	for (int i = 0; i < bf.MemLen; i++) {
+		tmp.pMem[i] |= bf.pMem[i];
 	}
 	return tmp;
 }
 
 TBitField TBitField::operator&(const TBitField & bf)
 {
-	if (MemLen != bf.GetMemLen()) {
-		cout << "Поля разной длины" << endl;
-		return *this;
+	int len = BitLen;
+	if (BitLen < bf.BitLen)
+		len = bf.BitLen;
+	TBitField tmp(len);
+	for (int i = 0; i < MemLen; i++)
+	{
+		tmp.pMem[i] = pMem[i];
 	}
-	TBitField tmp = TBitField(BitLen);
-	for (int i = 0; i < MemLen; i++) {
-		tmp.pMem[i] = pMem[i] & bf.pMem[i];
+	for (int i = 0; i < bf.MemLen; i++) {
+		tmp.pMem[i] &= bf.pMem[i];
 	}
 	return tmp;
 }
-
 TBitField TBitField::operator~()
 {
+	TBitField tmp(BitLen);
 	for (int i = 0; i < MemLen; i++) {
-		pMem[i] = ~pMem[i];
+		tmp.pMem[i] = ~pMem[i];
 	}
-	return *this;
+	return tmp;
 }
 
 TBitField::~TBitField()
@@ -160,7 +175,6 @@ istream & operator>>(istream & istr, TBitField & bf)
 ostream & operator<<(ostream & ostr, const TBitField & bf)
 {
 	int len = bf.GetBitLen();
-	string str;
 	for (int i = 0; i < len; i++) {
 		if (bf.GetBit(i)) 
 			ostr << '1';
