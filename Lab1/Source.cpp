@@ -8,7 +8,7 @@ int main()
 {
 	setlocale(LC_ALL, "Rus");
 	int n, m, k;
-	/*
+	
 	cout << "Тестирование программ поддержки множества" << endl;
 	cout << "	Решето Эратосфена" << endl;
 	cout << "Введите верхнюю границу целых значений - ";
@@ -25,7 +25,6 @@ int main()
 				if (s.IsMember(k)) s.DelElem(k); // оставшиеся в s элементы - простые числа
 
 	cout << endl << "Печать множества некратных чисел" << endl << s << endl;
-	*/
 
 	cout << endl << "Ввод множества A" << endl;	
 	cout << endl << "Введите наибольший элемент" << endl;
@@ -36,7 +35,7 @@ int main()
 	cout << endl << "Введённое множество" << endl;
 	cout << A << endl;
 	cout << "Всего элементов " << A.GetPower() << endl;
-	/*
+	
 	cout << endl << "Ввод множества B" << endl;
 	cout << endl << "Введите наибольший элемент" << endl;
 	cin >> n;
@@ -64,13 +63,12 @@ int main()
 		cout << "A != B" << endl;
 	
 	cout << "A + B = {" << A + B << "}" << endl;
-	cout << "A * B = {" << A * B << "}" << endl;*/
+	cout << "A * B = {" << A * B << "}" << endl;
 
 	cout << "~A = {" << ~A << "}" << endl;
 
 	cout << A;
-	/*B = A;
-	
+	B = A;
 
 	cout << "Множество B после копирования множества A = {" << B << "}" << endl;
 
@@ -83,6 +81,6 @@ int main()
 		cout << n << " является элементом множества B" << endl;
 	else 
 		cout << n << " не является элементом множества B" << endl;
-		*/
+		
 	system("pause");
 }
