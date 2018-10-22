@@ -144,10 +144,11 @@ TBitField TBitField::operator&(const TBitField & bf)
 }
 TBitField TBitField::operator~()
 {
+	TBitField tmp(BitLen);
 	for (int i = 0; i < MemLen; i++) {
-		pMem[i] = ~pMem[i];
+		tmp.pMem[i] = ~pMem[i];
 	}
-	return *this;
+	return tmp;
 }
 
 TBitField::~TBitField()
