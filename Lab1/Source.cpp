@@ -6,6 +6,7 @@ using namespace std;
 void menu();
 void primeNumbers();
 void operations();
+void oneSet(int n, TSet S);
 
 int main()
 {
@@ -78,76 +79,61 @@ void operations()
 	cout << B << endl;
 	cout << "Всего элементов " << B.GetPower() << endl;
 
-	//int input = -1;
-	while () {
+	int input = -1;
+	while (input != -1) {
 		cout << "Выберите дальнейшее действие:" << endl
 			<< "\t1. Операции над A" << endl
 			<< "\t2. Операции над B" << endl
 			<< "\t3. Операции над обоими множествами" << endl
 			<< "\t-1. Завершить работу" << endl;
-		//cin >> input;
+		cin >> input;
 
-		//if ((input == 1) || (input == 2))
+		if ((input == 1) || (input == 2)) {
 			cout << "Выберите дальнейшее действие:" << endl
-			<< "\t1. Добавить элемент" << endl
-			<< "\t2. Удалить элемент" << endl;
-		<< "\t3. Напечатать дополнение множества" << endl;
-		/*
-			<< "\t5. Проверить равенство множеств А и B" << endl
-			<< "\t6. Найти объединение множеств А и B" << endl
-			<< "\t7. Найти пересечение множеств А и B" << endl*/
+				<< "\t1. Добавить элемент" << endl
+				<< "\t2. Удалить элемент" << endl
+				<< "\t3. Напечатать дополнение множества" << endl;
+			cin >> n;
+			
+			if(input == 1)
+				oneSet(n, A);
+			else
+				oneSet(n, B);
+		}
+
+		if (input == 3) {
+				cout << "Выберите дальнейшее действие:" << endl
+				<< "\t1. Проверить равенство множеств А и B" << endl
+				<< "\t2. Найти объединение множеств А и B" << endl
+				<< "\t3. Найти пересечение множеств А и B" << endl
+				<< "\t4. Скопировать A в B" << endl
+				<< "\t5. Скопировать B в A" << endl;
+			cin >> n;
+
+			switch (n) {
+			case 1:
+				if (A == B)
+					cout << "A == B" << endl;
+				else
+					cout << "A != B" << endl;
+				break;
+			case 2:
+				cout << "A + B = {" << A + B << "}" << endl;
+				break;
+			case 3:
+				cout << "A * B = {" << A * B << "}" << endl;
+				break;
+			case 4:
+				cout << "A * B = {" << A * B << "}" << endl;
+				break;
+			case 5:
+				cout << "A * B = {" << A * B << "}" << endl;
+				break;
 			
 
-			cin >> n;
-
-		switch (n) {
-		case 1:
-			cout << "Введите элемент для добавления в множество A" << endl;
-			cin >> n;
-			A = A + n;
-			cout << A << endl;
-			break;
-		case 2:
-			cout << "Введите элемент для добавления в множество B" << endl;
-			cin >> n;
-			B = B + n;
-			cout << B << endl;
-			break;
-		case 3:
-			cout << "Введите элемент для исключения из множества A" << endl;
-			cin >> n;
-			A = A - n;
-			cout << A << endl;
-			break;
-		case 4:
-			cout << "Введите элемент для исключения из множества B" << endl;
-			cin >> n;
-			B = B - n;
-			cout << B << endl;
-			break;
-		case 5:
-			if (A == B)
-				cout << "A == B" << endl;
-			else
-				cout << "A != B" << endl;
-			break;
-		case 6:
-			cout << "A + B = {" << A + B << "}" << endl;
-			break;
-		case 7:
-			cout << "A * B = {" << A * B << "}" << endl;
-			break;
-		case 8:
-			cout << "~A = {" << ~A << "}" << endl;
-			break;
-		case 9:
-			cout << "~B = {" << ~B << "}" << endl;
-			break;
-
+			}
 		}
-	}
-
-	cout << "~A = {" << ~A << "}" << endl;
+		
 
 	B = A;
 	cout << "Множество B после копирования множества A = {" << B << "}" << endl;
@@ -162,4 +148,25 @@ void operations()
 	else
 		cout << n << " не является элементом множества B" << endl;
 
+}
+
+void oneSet(int n, TSet S)
+{
+	switch (n) {
+	case 1:
+		cout << "Введите элемент для добавления в множество" << endl;
+		cin >> n;
+		S = S + n;
+		cout << S << endl;
+		break;
+	case 2:
+		cout << "Введите элемент для исключения из множества" << endl;
+		cin >> n;
+		S = S - n;
+		cout << S << endl;
+		break;
+	case 3:
+		cout << "Дополнение множества = {" << ~S << "}" << endl;
+		break;
+	}
 }
