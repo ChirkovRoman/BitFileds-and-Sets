@@ -67,9 +67,7 @@ int main()
 
 	cout << "~A = {" << ~A << "}" << endl;
 
-	cout << A;
 	B = A;
-
 	cout << "Множество B после копирования множества A = {" << B << "}" << endl;
 
 	TBitField C = B;
