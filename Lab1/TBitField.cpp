@@ -19,8 +19,12 @@ TBitField::TBitField(const int _BitLen)
 
 TBitField::TBitField(const TBitField & bf)
 {
-	
-
+	BitLen = bf.GetBitLen();
+	MemLen = bf.GetMemLen();
+	pMem = new TELEM[MemLen];
+	for (int i = 0; i < MemLen; i++) {
+		pMem[i] = bf.pMem[i];
+	}
 }
 
 int TBitField::GetMemIndex(const int n) const
