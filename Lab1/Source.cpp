@@ -36,7 +36,7 @@ int main()
 	cout << endl << "Введённое множество" << endl;
 	cout << A << endl;
 	cout << "Всего элементов " << A.GetPower() << endl;
-
+	/*
 	cout << endl << "Ввод множества B" << endl;
 	cout << endl << "Введите наибольший элемент" << endl;
 	cin >> n;
@@ -62,13 +62,15 @@ int main()
 		cout << "A == B" << endl;
 	else 
 		cout << "A != B" << endl;
-
+	
 	cout << "A + B = {" << A + B << "}" << endl;
-	cout << "A * B = {" << A * B << "}" << endl;
+	cout << "A * B = {" << A * B << "}" << endl;*/
+
 	cout << "~A = {" << ~A << "}" << endl;
 
-	B = A;
-
+	cout << A;
+	/*B = A;
+	
 
 	cout << "Множество B после копирования множества A = {" << B << "}" << endl;
 
@@ -81,6 +83,6 @@ int main()
 		cout << n << " является элементом множества B" << endl;
 	else 
 		cout << n << " не является элементом множества B" << endl;
-
+		*/
 	system("pause");
 }

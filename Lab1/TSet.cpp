@@ -22,7 +22,8 @@ TSet::TSet(int mp)
 
 TSet::TSet(const TSet & s)
 {
-	*this = s;
+	MaxPower = s.MaxPower;
+	BitField = s.BitField;
 }
 
 TSet::TSet(const TBitField & bf)
@@ -116,7 +117,7 @@ TSet TSet::operator*(const TSet & s)
 
 TSet TSet::operator~(void)
 {
-	TSet tmp = *this;
+	TSet tmp(*this);
 	tmp.BitField = ~BitField;
 
 	return tmp;

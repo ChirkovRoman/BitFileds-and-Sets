@@ -19,7 +19,8 @@ TBitField::TBitField(const int _BitLen)
 
 TBitField::TBitField(const TBitField & bf)
 {
-	*this = bf;
+	
+
 }
 
 int TBitField::GetMemIndex(const int n) const
