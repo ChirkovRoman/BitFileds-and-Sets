@@ -54,8 +54,11 @@ int TSet::GetPower(void) const
 
 void TSet::InsElem(const int n)
 {
-	if (n > MaxPower)
+	if (n > MaxPower) {
+		MaxPower = n;
 		BitField = TBitField(MaxPower) | BitField;
+	}
+	
 	BitField.SetBit(n);
 }
 
