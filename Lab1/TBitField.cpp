@@ -38,7 +38,6 @@ int TBitField::GetMemIndex(const int n) const
 TELEM TBitField::GetMemMask(const int n) const
 {
 	TELEM Mask;
-	//int m =  n - ((n >> 5) * 32);
 	Mask = 1 << (n & 31);
 	return Mask;
 }
@@ -60,7 +59,6 @@ int TBitField::GetMemLen() const
 
 void TBitField::SetBit(const int n) 
 {
-	// 0 < n < BitLen !!!
 	int bit = GetBit(n);
 	if ((bit == 1) || (n < 0) || (n > BitLen)) return;
 	int index = GetMemIndex(n);
@@ -70,7 +68,6 @@ void TBitField::SetBit(const int n)
 
 void TBitField::ClearBit(const int n)
 {
-	// 0 < n < BitLen !!!
 	int bit = GetBit(n); 
 	if ((bit == 0) || (n < 0) || (n > BitLen)) return;
 	int index = GetMemIndex(n);
